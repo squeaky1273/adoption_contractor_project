@@ -9,4 +9,7 @@
 {% endfor %}
 
 <p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit</a></p>
+<!-- Delete button -->
+<p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
+    <button type='submit'>Delete</button>
 {% endblock %}

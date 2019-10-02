@@ -27,9 +27,9 @@ def adoptions_submit():
         'price': request.form.get('price'),
         'img_url': request.form.get('img_url')
     }
-    print(adoption)
     adoptions.insert_one(adoption)
     return redirect(url_for('adoptions_index'))
+
 
 @app.route('/adoptions/<adoption_id>')
 def adoptions_show(adoption_id):
@@ -41,7 +41,13 @@ def adoptions_show(adoption_id):
 def adoptions_edit(playlist_id):
     """Show the edit form for an adoption ad."""
     adoption = adoptions.find_one({'_id': ObjectId(adoption_id)})
-    return render_template('adoptions_edit.html', adoption=adoption, title='Edit Adoption Ad')
+    return render_template('adoptions_edit.html', adoption=adoption)
+
+@app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
+def adoptions_delete(adoption_id):
+    """Delete one adoption ad."""
+    adoptions.delete_one({'_id': ObjectId(adoption_id)})
+    return redirect(url_for('adoptions_index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
