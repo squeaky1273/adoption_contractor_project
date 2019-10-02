@@ -32,11 +32,9 @@ def adoptions_submit():
     return redirect(url_for('adoptions_index'))
 
 @app.route('/adoptions/<adoption_id>')
-def adoptions_show(adoption_id)
+def adoptions_show(adoption_id):
     """Show a single adoption ad"""
-    adoption = adoptions.find_one({'_id: ObjectID(adoption_id)'})
-    adoption_comments = comments.find({'adoption_id}': ObjectId(adoption_id))
-    return render_template('adoptions_show.html', adoption=adoption, comments=adoption_comments)
+    return f'My ID is {adoption_id}'
 
 if __name__ == '__main__':
     app.run(debug=True)

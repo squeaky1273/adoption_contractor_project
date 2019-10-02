@@ -1,0 +1,12 @@
+<!-- templates/adoptions_show.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<a href='/'>Back to Home</a>
+
+<h1>{{ adoption.title }}</h1>
+<h2>{{ adoption.description }}</h2>
+{% endfor %}
+
+<p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit</a></p>
+{% endblock %}
