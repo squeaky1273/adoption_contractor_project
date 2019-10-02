@@ -16,7 +16,7 @@ def index():
 @app.route('/adoptions/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
-    return render_template('adoptions_new.html')
+    return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")
 
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
@@ -34,7 +34,14 @@ def adoptions_submit():
 @app.route('/adoptions/<adoption_id>')
 def adoptions_show(adoption_id):
     """Show a single adoption ad"""
-    return f'My ID is {adoption_id}'
+    adoption = adoptions.find_one({'_id': ObjectId(adoption_id)})
+    return render_template('adoptions_show.html', adoption=adoption)
+
+@app.route('/adoptions/<adoption_id>/edit')
+def adoptions_edit(playlist_id):
+    """Show the edit form for an adoption ad."""
+    adoption = adoptions.find_one({'_id': ObjectId(adoption_id)})
+    return render_template('adoptions_edit.html', adoption=adoption, title='Edit Adoption Ad')
 
 if __name__ == '__main__':
     app.run(debug=True)
