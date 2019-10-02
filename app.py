@@ -1,17 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
-client = MongoClient()
-db = client.Adoptions
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Adoption')
+client = MongoClient(host=f'{host}?retryWrites=false')
+db = client.get_default_database()
 adoptions = db.adoptions
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def adoptions_index():
     """Return homepage."""
-    return render_template('index.html', adoptions=adoptions.find())
+    return render_template('adoptions_index.html', adoptions=adoptions.find())
 
 @app.route('/adoptions/new')
 def adoptions_new():

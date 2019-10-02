@@ -15,7 +15,12 @@ class PlaylistsTests(TestCase):
 
         # Show Flask errors that happen during tests
         app.config['TESTING'] = True
-
+    
+    def test_index(self):
+        """Test the adoptions homepage."""
+        result = self.client.get('/')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'Adoption', result.data)
 
 
 
