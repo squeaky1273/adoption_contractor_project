@@ -14,13 +14,19 @@ def index():
 
 @app.route('/adoptions/new')
 def adoptions_new():
-    """Create a new adoption ad"""
+    """Return to the new adoption ad page"""
     return render_template('adoptions_new.html')
 
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
-    """Submit a new adoption ad."""
-    print(request.form.to_dict())
+    """Submit a new adoption ad. Allows the user to input information for the adoption ad."""
+    adoption ad = {
+        'breed of the animal': request.form.get('breed of the animal'),
+        'description of the animal': request.form.get('description of the animal')
+        'price': request.form.get('price')
+        'img_url': request.form.get('img_url')
+    }
+    adoptions.insert_one(adoption)
     return redirect(url_for('adoptions_index'))
 
 if __name__ == '__main__':
