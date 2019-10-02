@@ -20,14 +20,18 @@ def adoptions_new():
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
     """Submit a new adoption ad. Allows the user to input information for the adoption ad."""
-adoption ad = {
+adoption = {
         'breed of the animal': request.form.get('breed of the animal'),
         'description of the animal': request.form.get('description of the animal')
         'price': request.form.get('price')
         'img_url': request.form.get('img_url')
     }
+    print(adoption)
     adoptions.insert_one(adoption)
     return redirect(url_for('adoptions_index'))
+
+@app.route()
+def
 
 if __name__ == '__main__':
     app.run(debug=True)
