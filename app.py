@@ -20,7 +20,7 @@ def adoptions_new():
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
     """Submit a new adoption ad. Allows the user to input information for the adoption ad."""
-    adoption ad = {
+adoption ad = {
         'breed of the animal': request.form.get('breed of the animal'),
         'description of the animal': request.form.get('description of the animal')
         'price': request.form.get('price')
