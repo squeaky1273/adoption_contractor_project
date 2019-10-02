@@ -1,1 +1,24 @@
 <!-- templates/adoptions_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/adoptions'>
+    <fieldset>
+    <legend>New Adoption Ad</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Title</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <label for='description'>Description</label><br>
+        <input type='text' name='description' />
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Adoption Ad</button>
+    </p>
+</form>
+{% endblock %}
