@@ -3,15 +3,18 @@
 
 {% block content %}
 <a href='/'>Back to Home</a>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h1>{{ adoption.title }}</h1>
+        <h2>{{ adoption.description }}</h2>
+        <h2>{{ adoption.price }}</h2>
+        <h2>{{ adoption.image }}</h2>
 
-<h1>{{ adoption.title }}</h1>
-<h2>{{ adoption.description }}</h2>
-<h2>{{ adoption.price }}</h2>
-<h2>{{ adoption.image }}</h2>
-{% endfor %}
-
-<p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit</a></p>
-<!-- Delete button -->
-<p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
-    <button type='submit'>Delete</button>
+        <p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit</a></p>
+        <p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
+            <input type='hidden' name='_method' value='DELETE'>
+            <button class='btn btn-primary' type='submit'>Delete</button>
+        </form></p>
+    </div>
+</div>
 {% endblock %}
