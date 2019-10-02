@@ -18,7 +18,7 @@ def adoptions_new():
     return render_template('adoptions_new.html')
 
 @app.route('/adoptions', methods=['POST'])
-def playlists_submit():
+def adoptions_submit():
     """Submit a new adoption ad."""
     print(request.form.to_dict())
     return redirect(url_for('adoptions_index'))
