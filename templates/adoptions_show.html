@@ -5,9 +5,9 @@
 <a href='/'>Back to Home</a>
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <h1>Adoption Ad: {{ adoption.name }}</h1>
+        <h1>{{ adoption.name }}</h1>
         <h2>Breed: {{ adoption.breed }}</h2>
-        <h2>{{ adoption.description }}</h2>
+        <h3>Description: {{ adoption.description }}</h3>
         Cost: ${{ adoption.price }}
         <img src="{{ adoption.image_url }}"><br>
 

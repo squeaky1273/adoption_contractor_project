@@ -7,8 +7,8 @@
 <div class='row'>
     {% for adoption in adoptions %}
         <div class='col-md-3'>
-            <h2><a href='/adoptions/{{ adoption._id }}'>{{ adoption.title }}</a></h2>
-            <small>{{ adoption.description }}</small>
+            <h2><a href='/adoptions/{{ adoption._id }}'>{{ adoption.name }}</a></h2>
+            <small>{{ adoption.breed }}</small>
         </div>
     {% endfor %}
 </div>
