@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/my_app_db')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 adoption_ads = db.adoptions
@@ -29,6 +29,7 @@ def adoptions_submit():
         'price': request.form.get('price'),
         'img_url': request.form.get('img_url')
     }
+    print(adoption)
     adoption_id = adoption_ads.insert_one(adoption).inserted_id
     return redirect(url_for('adoptions_show', adoption_id=adoption_id))
 
@@ -58,7 +59,7 @@ def adoption_update(adoption_id):
 def adoptions_edit(adoption_id):
     """Show the edit form for an adoption ad."""
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
-    return render_template('adoptions_edit.html', adoption=adoption)
+    return render_template('adoptions_edit.html', adoption=adoption, title="Edit Adoption Ad")
 
 @app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
 def adoptions_delete(adoption_id):
@@ -67,4 +68,4 @@ def adoptions_delete(adoption_id):
     return redirect(url_for('adoptions_index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
