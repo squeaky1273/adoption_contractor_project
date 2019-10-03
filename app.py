@@ -43,6 +43,7 @@ def adoption_update(adoption_id):
     """Edit page for an Adoption Ad."""
     updated_adoption = {
         'name': request.form.get('name'),
+        'breed': request.form.get('breed'),
         'decription': request.form.get('description'),
         'price': request.form.get('price'),
         'img_url': request.form.get('img_url')
