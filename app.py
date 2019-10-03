@@ -24,8 +24,9 @@ def adoptions_new():
 def adoptions_submit():
     """Submit a new adoption ad. Allows the user to input information for the adoption ad."""
     adoption = {
-        'breed of the animal': request.form.get('breed of the animal'),
-        'description of the animal': request.form.get('description of the animal'),
+        'name': request.form.get('name'),
+        'breed': request.form.get('breed'),
+        'description': request.form.get('description'),
         'price': request.form.get('price'),
         'img_url': request.form.get('img_url')
     }
