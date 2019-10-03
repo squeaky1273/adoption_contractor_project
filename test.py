@@ -21,7 +21,12 @@ class PlaylistsTests(TestCase):
         result = self.client.get('/')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'Adoption', result.data)
-
+    
+    def test_new(self):
+        """Test the new adoption creation page."""
+        result = self.client.get('/adoptions/new')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'New Adoption Ad', result.data)
 
 
 if __name__ == '__main__':
