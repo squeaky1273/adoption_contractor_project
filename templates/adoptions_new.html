@@ -2,7 +2,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/adoptions'>
-    {% include 'partials/adoptions_form.html' %}
-</form>
+<a href="/">Back to Home</a>
+
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/adoptions'>
+            {% include 'partials/adoptions_form.html' %}
+            <!-- BUTTON -->
+                <div class='form-group'>
+                    <button class='btn btn-primary' type='submit'>Save Pet Adoption Ad</button>
+                </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
