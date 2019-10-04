@@ -1,20 +1,8 @@
-<!-- templates/adoptions_edit.html -->
+<!-- templates/playlists_edit.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-
-<a href="/">Back to Home</a>
-
-<div class='row'>
-    <div class='col-sm-6 col-sm-offset-3'>
-        <form method='POST' action='/adoptions/{{adoption._id}}'>
-            <input type='hidden' name='_method' value='PUT'/>
-            {% include 'partials/adoptions_form.html' %}
-            <!-- BUTTON -->
-            <div class='form-group'>
-                <button class='btn btn-primary' type='submit'>Save Pet Adoption Ad</button>
-            </div>
-        </form>
-    </div>
-</div>
+<form method='POST' action='/adoptions/{{adoption._id}}'>
+    {% include 'partials/adoptions_form.html' %}
+</form>
 {% endblock %}
