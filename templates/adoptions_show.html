@@ -9,7 +9,7 @@
         <h2>Breed: {{ adoption.breed }}</h2>
         <h3>Description: {{ adoption.description }}</h3>
         <h4>Cost: ${{ adoption.price }}</h4>
-        <img src="{{ adoption.image_url }}"><br>
+        <h4>Image URL: {{ adoption.img_url }}</h4>
 
         <p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
         <p><form method='POST' action='/adoptions/{{ adoption._id }}'>
