@@ -47,14 +47,24 @@ class PlaylistsTests(TestCase):
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'New Adoption Ad', result.data)
 
-@mock.patch('pymongo.collection.Collection.find_one')
-def test_show_adoption(self, mock_find):
-    """Test showing a single adoption ad."""
-    mock_find.return_value = sample_playlist
+    @mock.patch('pymongo.collection.Collection.find_one')
+    def test_show_adoption(self, mock_find):
+        """Test showing a single adoption ad."""
+        mock_find.return_value = sample_playlist
 
-    result = self.client.get(f'/adoptions/{sample_adoption_id}')
-    self.assertEqual(result.status, '200 OK')
-    self.assertIn(b'Mr. Chew', result.data)
+        result = self.client.get(f'/adoptions/{sample_adoption_id}')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'Mr. Chew', result.data)
+
+    @mock.patch('pymongo.collection.Collection.find_one')
+    def test_edit_adoption(self, mock_find):
+        """Test editing a single adoption."""
+        mock_find.return_value = sample_adoption
+
+        result = self.client.get(f'/adoptions/{sample_adoption_id}/edit')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'Mr. Chew', result.data)
+
 
 if __name__ == '__main__':
     unittest_main()
