@@ -83,5 +83,13 @@ class PlaylistsTests(TestCase):
         mock_update.assert_called_with({'_id': sample_adoption_id},
                                        {'$set': sample_adoption})
 
+    @mock.patch('pymongo.collection.Collection.delete_one')
+    def test_delete_adoption(self, mock_delete):
+        form_data = {'_method': 'DELETE'}
+        result = self.client.post(f'/adoptions/{sample_adoption_id}/delete',
+                                  data=form_data)
+        self.assertEqual(result.status, '302 FOUND')
+        mock_delete.assert_called_with({'_id': sample_adoption_id})
+
 if __name__ == '__main__':
     unittest_main()
