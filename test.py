@@ -58,12 +58,21 @@ class PlaylistsTests(TestCase):
 
     @mock.patch('pymongo.collection.Collection.find_one')
     def test_edit_adoption(self, mock_find):
-        """Test editing a single adoption."""
+        """Test editing a single adoption ad."""
         mock_find.return_value = sample_adoption
 
         result = self.client.get(f'/adoptions/{sample_adoption_id}/edit')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'Mr. Chew', result.data)
+
+    @mock.patch('pymongo.collection.Collection.insert_one')
+    def test_submit_adoption(self, mock_insert):
+        """Test submitting a new adoption ad."""
+        result = self.client.post('/adoptions', data=sample_form_data)
+
+        # After submitting, should redirect to that adoption ad's page
+        self.assertEqual(result.status, '302 FOUND')
+        mock_insert.assert_called_with(sample_adoption)
 
 
 if __name__ == '__main__':
