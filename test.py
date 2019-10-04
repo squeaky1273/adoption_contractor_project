@@ -1,5 +1,5 @@
 # test.py
-
+"""
 from unittest import TestCase, main as unittest_main, mock
 from bson.objectid import ObjectId
 from app import app
@@ -24,10 +24,10 @@ sample_form_data = {
 }
 
 class PlaylistsTests(TestCase):
-    """Flask tests."""
+    Flask tests.
 
     def setUp(self):
-        """Stuff to do before every test."""
+        Stuff to do before every test.
         
         # Get the Flask test client
         self.client = app.test_client()
@@ -36,20 +36,20 @@ class PlaylistsTests(TestCase):
         app.config['TESTING'] = True
     
     def test_index(self):
-        """Test the adoptions homepage."""
+        Test the adoptions homepage.
         result = self.client.get('/')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'Adoption', result.data)
     
     def test_new(self):
-        """Test the new adoption creation page."""
+        Test the new adoption creation page.
         result = self.client.get('/adoptions/new')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'New Adoption Ad', result.data)
 
     @mock.patch('pymongo.collection.Collection.find_one')
     def test_show_adoption(self, mock_find):
-        """Test showing a single adoption ad."""
+        Test showing a single adoption ad.
         mock_find.return_value = sample_playlist
 
         result = self.client.get(f'/adoptions/{sample_adoption_id}')
@@ -58,7 +58,7 @@ class PlaylistsTests(TestCase):
 
     @mock.patch('pymongo.collection.Collection.find_one')
     def test_edit_adoption(self, mock_find):
-        """Test editing a single adoption ad."""
+        Test editing a single adoption ad.
         mock_find.return_value = sample_adoption
 
         result = self.client.get(f'/adoptions/{sample_adoption_id}/edit')
@@ -67,7 +67,7 @@ class PlaylistsTests(TestCase):
 
     @mock.patch('pymongo.collection.Collection.insert_one')
     def test_submit_adoption(self, mock_insert):
-        """Test submitting a new adoption ad."""
+        Test submitting a new adoption ad.
         result = self.client.post('/adoptions', data=sample_form_data)
 
         # After submitting, should redirect to that adoption ad's page
@@ -93,3 +93,4 @@ class PlaylistsTests(TestCase):
 
 if __name__ == '__main__':
     unittest_main()
+"""
