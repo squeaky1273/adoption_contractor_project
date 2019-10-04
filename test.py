@@ -74,6 +74,14 @@ class PlaylistsTests(TestCase):
         self.assertEqual(result.status, '302 FOUND')
         mock_insert.assert_called_with(sample_adoption)
 
+    @mock.patch('pymongo.collection.Collection.update_one')
+    def test_update_adoption(self, mock_update):
+        result = self.client.post(f'/adoptions/{sample_adoption_id}',
+                                  data=sample_form_data)
+
+        self.assertEqual(result.status, '302 FOUND')
+        mock_update.assert_called_with({'_id': sample_adoption_id},
+                                       {'$set': sample_adoption})
 
 if __name__ == '__main__':
     unittest_main()
