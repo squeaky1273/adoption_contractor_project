@@ -11,7 +11,7 @@
         <h4>Cost: ${{ adoption.price }}</h4>
         <h4>{{ adoption.img_url }}</h4>
 
-        <p><a href='/adoptionss/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
+        <p><a href='/adoptions/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
         <p><form method='POST' action='/adoptions/{{ adoption._id }}'>
             <input type='hidden' name='_method' value='DELETE'>
             <button class='btn btn-primary' type='submit'>Delete Adoption Ad</button>
