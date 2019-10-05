@@ -56,7 +56,7 @@ def adoption_update(adoption_id):
         {'_id': ObjectId(adoption_id)},
         {'$set': updated_adoption}
     )
-    return redirect(url_for('adoption_show', adoption_id=adoption_id))
+    return redirect(url_for('adoptions_show', adoption_id=adoption_id))
 
 @app.route('/adoptions/<adoption_id>/edit')
 def adoptions_edit(adoption_id):
