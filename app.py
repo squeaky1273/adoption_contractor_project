@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from functools import reduce
 import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
@@ -17,7 +16,7 @@ def adoptions_index():
     """Return homepage."""
     return render_template('adoptions_index.html', adoptions=adoption_ads.find())
 
-@app.route('/new')
+@app.route('adoptions/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
     return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")

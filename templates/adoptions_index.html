@@ -2,17 +2,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h1>Pet Adoption Ads</h1>
 
-<h1>Pet Adoption Ads</h1>
 
-<a href="/new">New Adoption Ad</a>
-
-<div class='row'>
-    {% for adoption in adoptions %}
-        <div class='col-md-3'>
-            <h2><a href='/adoptions/{{ adoption._id }}'>{{ adoption.name }}</a></h2>
-            <small>{{ adoption.breed }}</small>
-        </div>
-    {% endfor %}
-</div>
+    <div class='row'>
+        {% for adoption in adoptions %}
+            <div class='col-md-3'>
+                <h2><a href='/adoptions/{{ adoption._id }}'>{{ adoption.name }}</a></h2>
+                <small>{{ adoption.breed }}</small>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
