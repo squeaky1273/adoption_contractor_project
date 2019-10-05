@@ -42,7 +42,7 @@ def adoptions_show(adoption_id):
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_show.html', adoption=adoption)
 
-@app.route('/edit/<adoption_id>', methods=['POST'])
+@app.route('/adoptions/<adoption_id>', methods=['POST'])
 def adoption_update(adoption_id):
     """Edit page for an Adoption Ad."""
     updated_adoption = {
@@ -58,13 +58,13 @@ def adoption_update(adoption_id):
     )
     return redirect(url_for('adoption_show', adoption_id=adoption_id))
 
-@app.route('/edit/<adoption_id>', methods=['GET'])
+@app.route('/adoptions/<adoption_id>/edit')
 def adoptions_edit(adoption_id):
     """Show the edit form for an adoption ad."""
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_edit.html', adoption=adoption, title="Edit Adoption Ad")
 
-@app.route('/delete/<adoption_id>', methods=['POST'])
+@app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
 def adoptions_delete(adoption_id):
     """Delete one adoption ad."""
     adoption_ads.delete_one({'_id': ObjectId(adoption_id)})

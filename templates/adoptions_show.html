@@ -14,13 +14,12 @@
             <div class="card"><div class="card-body"
                 <iframe width="500" height="500" src="{{ img_url }}"></iframe>
             </div></div>
-        <br></br>
-        <a href='/adoptions/{{ adoption._id }}/edit'>Edit Adoption Ad</a>
-        <br></br>
-        <form method='POST' action='/adoptions_edit/{{ adoption._id }}'>
+        {% endfor %}
+        <p><a href='/adoptions/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
+        <p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
             <input type='hidden' name='_method' value='DELETE'>
             <button class='btn btn-primary' type='submit'>Delete Adoption Ad</button>
-        </form>
+        </form></p>
     </div>
 </div>
 
