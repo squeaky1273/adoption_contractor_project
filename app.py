@@ -17,7 +17,7 @@ def adoptions_index():
     """Return homepage."""
     return render_template('adoptions_index.html', adoptions=adoption_ads.find())
 
-@app.route('adoptions/new')
+@app.route('/adoptions/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
     return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")
