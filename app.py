@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from functools import reduce
 import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
@@ -16,7 +17,7 @@ def adoptions_index():
     """Return homepage."""
     return render_template('adoptions_index.html', adoptions=adoption_ads.find())
 
-@app.route('/adoptions/new')
+@app.route('/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
     return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")
@@ -57,13 +58,13 @@ def adoption_update(adoption_id):
     )
     return redirect(url_for('adoption_show', adoption_id=adoption_id))
 
-@app.route('/adoptions/<adoption_id>/edit')
+@app.route('/edit/<adoption_id>', methods=['GET'])
 def adoptions_edit(adoption_id):
     """Show the edit form for an adoption ad."""
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_edit.html', adoption=adoption, title="Edit Adoption Ad")
 
-@app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
+@app.route('/delete/<adoption_id>', methods=['POST'])
 def adoptions_delete(adoption_id):
     """Delete one adoption ad."""
     adoption_ads.delete_one({'_id': ObjectId(adoption_id)})
