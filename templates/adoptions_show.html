@@ -6,10 +6,10 @@
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ adoption.name }}</h1>
-        <h3>Breed: {{ adoption.breed }}</h3>
+        <h2>Breed: {{ adoption.breed }}</h2>
         <h3>Description: {{ adoption.description }}</h3>
-        <h3>Cost: ${{ adoption.price }}</h3>
-        <img src="{{ adoption.img_url }}"><br>
+        Cost: ${{ adoption.price }}
+        <img src="{{ adoption.image_url }}"><br>
 
         <p><a href='/adoptions/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
         <p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
