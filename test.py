@@ -8,7 +8,8 @@ sample_adoption_id = ObjectId("5d99682455ca2b0b9551da68")
 sample_adoption = {
     'name': 'Mr. Chew',
     'breed': 'toy poodle',
-    'description': 'Cats acting weird',
+    'description': 'He is cute and playful, but is a handful.',
+    'age': '2 years',
     'price': '$200',
     'image': [
         'https://img.pixers.pics/pho_wat(s3:700/FO/35/94/85/64/700_FO35948564_dc352cbea3213beeb456fccbd9a199db.jpg,522,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,302,650,jpg)/wall-murals-white-toy-poodle-gives-that-a-paw.jpg.jpg'
@@ -18,6 +19,7 @@ sample_form_data = {
     'name': sample_adoption['name'],
     'breed': sample_adoption['breed'],
     'description': sample_adoption['description'],
+    'age': sample_adoption['age'],
     'cost': sample_adoption['cost'],
     'image': sample_adoption['image']
 }
