@@ -2,7 +2,7 @@
 
 <fieldset>
     <legend>Create Pet Adoption Ad</legend>
-    <!-- TITLE -->
+    <!-- NAME -->
     <div class='form-group'>
         <label for='adoption-title'>Name of the Animal</label><br>
         <input class='form-control' id='adoption-title' type='text' name='name' value='{{ adoption.name }}'/>
@@ -28,7 +28,11 @@
 
     <!-- IMAGE OF THE ANIMAL -->
     <div class='form-group'>
-        <label for='description'>Image of the Animal</label><br>
-        <input type='text' name='image_url'><b>
+        <label for='adoption-images'>Image of the Animal</label><br>
+        <p class='text-muted'>Add is in the form of 'img_url'. Separate with a newline.</p>
+        <textarea class='form-control' id='adoption-images' name='img_url' rows='10' />{{ "\n".join(adoption.img_url) }}</textarea>
+  </div>
+</fieldset>
+
     </div>
 </fieldset>
