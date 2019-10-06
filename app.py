@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from functools import reduce
 import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
@@ -20,7 +19,7 @@ def adoptions_index():
 @app.route('/adoptions/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
-    return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")
+    return render_template('adoptions_new.html', adoption={}, title='New Adoption Ad')
 
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
@@ -42,9 +41,15 @@ def adoptions_show(adoption_id):
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_show.html', adoption=adoption)
 
+@app.route('/adoptions/<adoption_id>/edit')
+def adoptions_edit(adoption_id):
+    """Show the edit form for an adoption ad."""
+    adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
+    return render_template('adoptions_edit.html', adoption=adoption, title='Edit Adoption Ad')
+
 @app.route('/adoptions/<adoption_id>', methods=['POST'])
 def adoption_update(adoption_id):
-    """Edit page for an Adoption Ad."""
+    """Submit an edited an Adoption Ad."""
     updated_adoption = {
         'name': request.form.get('name'),
         'breed': request.form.get('breed'),
@@ -54,15 +59,8 @@ def adoption_update(adoption_id):
     }
     adoption_ads.update_one(
         {'_id': ObjectId(adoption_id)},
-        {'$set': updated_adoption}
-    )
+        {'$set': updated_adoption})
     return redirect(url_for('adoptions_show', adoption_id=adoption_id))
-
-@app.route('/adoptions/<adoption_id>/edit')
-def adoptions_edit(adoption_id):
-    """Show the edit form for an adoption ad."""
-    adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
-    return render_template('adoptions_edit.html', adoption=adoption, title="Edit Adoption Ad")
 
 @app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
 def adoptions_delete(adoption_id):
