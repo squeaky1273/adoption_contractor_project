@@ -20,7 +20,7 @@ def adoptions_index():
 @app.route('/adoptions/new')
 def adoptions_new():
     """Return to the new adoption ad page"""
-    return render_template('adoptions_new.html', adoption={}, title="New Adoption Ad")
+    return render_template('adoptions_new.html')
 
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
