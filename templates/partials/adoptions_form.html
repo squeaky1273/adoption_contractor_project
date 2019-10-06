@@ -2,34 +2,28 @@
 
 <fieldset>
     <legend>Edit Pet Adoption Ad</legend>
-    <!-- TITLE -->
+    <!-- NAME -->
     <div class='form-group'>
-        <label for='adoption-title'>Title</label><br>
-        <input class='form-control' id='adoption-title' type='text' name='title' value='{{ adoption.title }}'/>
+       <input type="text" name="name" value="{{ adoption.name }}"><br>
     </div>
     
     <!-- BREED OF THE ANIMAL-->
     <div class='form-group'>
-        <label for='description'>Breed of the Animal</label><br>
-        <input class='form-control' id='description' type='text' name='breed' value='{{ adoption.breed }}' />
+        <input type="text" name="breed" value="{{ adoption.breed }}"><br>
     </div>
     
     <!-- DESCRIPTION OF THE ANIMAL-->
     <div class='form-group'>
-        <label for='description'>Description of the Animal</label><br>
-        <input class='form-control' id='description' type='text' name='description' value='{{ adoption.description }}' />
+        <input type="text" name="description" value="{{ adoption.description }}"><br>
     </div>
 
     <!-- PRICE -->
     <div class='form-group'>
-        <label for='description'>Price of the Animal</label><br>
-        <input class='form-control' id='description' type='number' name='price' value='{{ adoption.price }}' />
+        <input type="number" name="price" value="{{ adoption.price }}"><br>
     </div>
 
     <!-- IMAGE OF THE ANIMAL -->
     <div class='form-group'>
-        <label for='adoption-image_url'>Image of the Animal</label><br>
-        <p class='text-muted'>Add images. Separate with a newline.</p>
-        <textarea class='form-control' id='adoption-image_url' name='images' rows='10' />{{ adoption.image_url }}</textarea>
+        <input type="text" name="img_url" value="{{ adoption.img_url }}"><br>
     </div>
 </fieldset>
