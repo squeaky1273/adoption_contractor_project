@@ -18,20 +18,20 @@ def adoptions_index():
 
 @app.route('/adoptions/new')
 def adoptions_new():
-    """Return to the new adoption ad page"""
+    """Return to the new adoption profile page"""
     return render_template('adoptions_new.html', adoption={}, title='New Adoption Ad')
 
 @app.route('/adoptions', methods=['POST'])
 def adoptions_submit():
-    """Submit a new adoption ad. Allows the user to input information for the adoption ad."""
+    """Submit a new adoption profile. Allows the user to input information for the adoption ad."""
     adoption = {
         'name': request.form.get('name'),
+        'img_url': request.form.get('img_url'),
         'breed': request.form.get('breed'),
         'sex': request.form.get('sex'),
         'description': request.form.get('description'),
         'age': request.form.get('age'),
-        'price': request.form.get('price'),
-        'img_url': request.form.get('img_url')
+        'price': request.form.get('price')
     }
     print(adoption)
     adoption_id = adoption_ads.insert_one(adoption).inserted_id
@@ -39,27 +39,27 @@ def adoptions_submit():
 
 @app.route('/adoptions/<adoption_id>')
 def adoptions_show(adoption_id):
-    """Show a single adoption ad"""
+    """Show a single adoption profile"""
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_show.html', adoption=adoption)
 
 @app.route('/adoptions/<adoption_id>/edit')
 def adoptions_edit(adoption_id):
-    """Show the edit form for an adoption ad."""
+    """Show the edit form for an adoption profile."""
     adoption = adoption_ads.find_one({'_id': ObjectId(adoption_id)})
     return render_template('adoptions_edit.html', adoption=adoption, title='Edit Adoption Ad')
 
 @app.route('/adoptions/<adoption_id>', methods=['POST'])
 def adoption_update(adoption_id):
-    """Submit an edited an Adoption Ad."""
+    """Submit an edited an Adoption Profile."""
     updated_adoption = {
         'name': request.form.get('name'),
+        'img_url': request.form.get('img_url'),
         'breed': request.form.get('breed'),
         'sex': request.form.get('sex'),
         'decription': request.form.get('description'),
         'age': request.form.get('age'),
-        'price': request.form.get('price'),
-        'img_url': request.form.get('img_url')
+        'price': request.form.get('price')
     }
     adoption_ads.update_one(
         {'_id': ObjectId(adoption_id)},
@@ -68,7 +68,7 @@ def adoption_update(adoption_id):
 
 @app.route('/adoptions/<adoption_id>/delete', methods=['POST'])
 def adoptions_delete(adoption_id):
-    """Delete one adoption ad."""
+    """Delete one adoption profile."""
     adoption_ads.delete_one({'_id': ObjectId(adoption_id)})
     return redirect(url_for('adoptions_index'))
 

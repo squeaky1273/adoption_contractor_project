@@ -5,18 +5,24 @@
 <a href='/'>Back to Home</a>
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <h1>{{ adoption.name }}</h1>
-        <h2>Breed: {{ adoption.breed }}</h2>
-        <h2>Sex: {{ adoption.sex }}</h2>
+        <h1><center>{{ adoption.name }}</center></h1>
+        <br>
+        <h3><center><img src="/static/img.png"></center></h3>
+        <br>
+        <h3>Breed: {{ adoption.breed }}</h3>
+        <h3>Sex: {{ adoption.sex }}</h3>
         <h3>Description: {{ adoption.description }}</h3>
         <h3>Age: {{ adoption.age }}</h3>
-        Price: ${{ adoption.price }}
-        <img src="/static/img.png">
+        <h3>Price: ${{ adoption.price }}</h3>
 
-        <p><a href='/adoptions/{{ adoption._id }}/edit'>Edit Adoption Ad</a></p>
+
+        <p><form action='/adoptions/{{ adoption._id }}/edit'>
+            <input type='hidden' name='_method' value='EDIT'>   
+            <button class='btn btn-primary' type='submit'>Edit Adoption Profile</button>
+        </form></p>
         <p><form method='POST' action='/adoptions/{{ adoption._id }}/delete'>
             <input type='hidden' name='_method' value='DELETE'>
-            <button class='btn btn-primary' type='submit'>Delete Adoption Ad</button>
+            <button class='btn btn-primary' type='submit'>Delete Adoption Profile</button>
         </form></p>
     </div>
 </div>

@@ -1,13 +1,19 @@
 <!-- templates/partials/playlists_form.html -->
 
 <fieldset>
-    <legend>Edit Pet Adoption Ad</legend>
+    <legend>Edit Pet Profile</legend>
     <!-- TITLE -->
     <div class='form-group'>
         <label for='adoption-title'>Name of the Animal</label><br>
         <input class='form-control' id='adoption-title' type='text' name='name' value='{{ adoption.name }}'/>
     </div>
     
+    <!-- IMAGE OF THE ANIMAL -->
+    <div class='form-group'>
+            <label for='description'>Image of the Animal</label><br>
+            <input class='img_url' id='description' type='text' name='img_url' value='{{ adoption.img_url }}' />
+    </div>
+
     <!-- BREED OF THE ANIMAL-->
     <div class='form-group'>
         <label for='description'>Breed of the Animal</label><br>
@@ -36,11 +42,5 @@
     <div class='form-group'>
         <label for='description'>Price of the Animal</label><br>
         <input class='form-control' id='description' type='number' name='price' value='{{ adoption.price }}' />
-    </div>
-
-    <!-- IMAGE OF THE ANIMAL -->
-    <div class='form-group'>
-        <label for='description'>Image of the Animal</label><br>
-        <input class='img_url' id='description' type='text' name='img_url' value='{{ adoption.img_url }}' />
     </div>
 </fieldset>
