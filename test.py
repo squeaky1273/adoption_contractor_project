@@ -11,7 +11,7 @@ sample_adoption = {
         'https://img.pixers.pics/pho_wat(s3:700/FO/35/94/85/64/700_FO35948564_dc352cbea3213beeb456fccbd9a199db.jpg,522,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,302,650,jpg)/wall-murals-white-toy-poodle-gives-that-a-paw.jpg.jpg'
     ],
     'breed': 'toy poodle',
-    'sex': 'male',
+    'gender': 'male',
     'description': 'He is cute and playful, but is a handful.',
     'age': '3 years',
     'price': '$200'
@@ -19,7 +19,7 @@ sample_adoption = {
 sample_form_data = {
     'name': sample_adoption['name'],
     'breed': sample_adoption['breed'],
-    'sex': sample_adoption['sex'],
+    'gender': sample_adoption['gender'],
     'description': sample_adoption['description'],
     'age': sample_adoption['age'],
     'cost': sample_adoption['cost'],
