@@ -27,6 +27,7 @@ def adoptions_submit():
     adoption = {
         'name': request.form.get('name'),
         'breed': request.form.get('breed'),
+        'sex': request.form.get('sex'),
         'description': request.form.get('description'),
         'age': request.form.get('age'),
         'price': request.form.get('price'),
@@ -54,6 +55,7 @@ def adoption_update(adoption_id):
     updated_adoption = {
         'name': request.form.get('name'),
         'breed': request.form.get('breed'),
+        'sex': request.form.get('sex'),
         'decription': request.form.get('description'),
         'age': request.form.get('age'),
         'price': request.form.get('price'),
