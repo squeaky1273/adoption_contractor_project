@@ -7,14 +7,13 @@
     <div class='col-sm-6 col-sm-offset-3'>
         <h1><center>{{ adoption.name }}</center></h1>
         <br>
-        <h3><center><img src="/static/img.png"></center></h3>
+        <h3><center><img src="/static/img_url/{{adoption.img_url}}"></center></h3>
         <br>
         <h3>Breed: {{ adoption.breed }}</h3>
         <h3>Gender: {{ adoption.gender }}</h3>
         <h3>Description: {{ adoption.description }}</h3>
         <h3>Age: {{ adoption.age }}</h3>
         <h3>Price: ${{ adoption.price }}</h3>
-
 
         <p><form action='/adoptions/{{ adoption._id }}/edit'>
             <input type='hidden' name='_method' value='EDIT'>   
