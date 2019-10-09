@@ -15,8 +15,9 @@ adoption_ads.insert_many = ([
     {"name": "Potty", "img_url": "parrot.png", "breed": "parrot", "gender": "male", "description": "He may or may not have learned some curse words.", "age": "2 years", "price": "$100"},
     {"name": "Percival", "img_url": "persian.png", "breed": "persian", "gender": "male", "description": "He enjoys sitting on fluffy thrones and being pampered.", "age": "2.5 years", "price": "$1250"},
     {"name": "Jerry", "img_url": "mouse.png", "breed": "mouse", "gender": "male", "description": "He is fun to watch move around.", "age": "10 months", "price": "$7"},
-    {"name": "Woofers", "img_url": "chihuahua.png", "breed": "chihuahua", "gender": "male", "description": "He is very bossy and gets jealous easily.", "age": "3 years", "price": "$150"},
-    {"name": "Hunter", "img_url": "bengal.png", "breed": "bengal", "gender": "female", "description": "She is quiet, but warms up to others.", "age": "1.5 years", "price": "$300"}
+    {"name": "Woofers", "img_url": "chihuahua.png", "breed": "chihuahua", "gender": "male", "description": "He is avery chill dog as you can see on his face.", "age": "3 years", "price": "$150"},
+    {"name": "Hunter", "img_url": "bengal.png", "breed": "bengal", "gender": "female", "description": "She is quiet, but warms up to others.", "age": "1.5 years", "price": "$300"},
+    {"name": "Chicken Little", "img_url": "chick.png", "breed": "chicken", "gender": "male", "description": "He is a little cutie, but can be vicious.", "age": "1 month", "price": "$3"}
 ])
 
 app = Flask(__name__)
