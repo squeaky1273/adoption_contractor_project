@@ -4,26 +4,24 @@ from unittest import TestCase, main as unittest_main, mock
 from bson.objectid import ObjectId
 from app import app
 
-sample_adoption_id = ObjectId("5d99682455ca2b0b9551da68")
+sample_adoption_id = ObjectId("5d998b843db823e0a58d8ffe")
 sample_adoption = {
     'name': 'Mr. Chew',
-    'image': [
-        'https://img.pixers.pics/pho_wat(s3:700/FO/35/94/85/64/700_FO35948564_dc352cbea3213beeb456fccbd9a199db.jpg,522,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,302,650,jpg)/wall-murals-white-toy-poodle-gives-that-a-paw.jpg.jpg'
-    ],
-    'breed': 'toy poodle',
+    'img_url':'toy_poodle.png',
+    'breed': 'Toy poodle',
     'gender': 'male',
-    'description': 'He is cute and playful, but is a handful.',
+    'description': 'He is cute dog that loves to get into trouble.',
     'age': '3 years',
-    'price': '$200'
+    'price': '$1000'
 }
 sample_form_data = {
     'name': sample_adoption['name'],
+    'img_url': sample_adoption['img_url'],
     'breed': sample_adoption['breed'],
     'gender': sample_adoption['gender'],
     'description': sample_adoption['description'],
     'age': sample_adoption['age'],
-    'cost': sample_adoption['cost'],
-    'image': sample_adoption['image']
+    'price': sample_adoption['price']
 }
 
 class AdoptionsTests(TestCase):
@@ -42,13 +40,13 @@ class AdoptionsTests(TestCase):
         """Test the adoptions homepage."""
         result = self.client.get('/')
         self.assertEqual(result.status, '200 OK')
-        self.assertIn(b'Pet Adoption Ad', result.data)
+        self.assertIn(b'Friends of All Sizes', result.data)
     
     def test_new(self):
         """Test the new adoption creation page."""
         result = self.client.get('/adoptions/new')
         self.assertEqual(result.status, '200 OK')
-        self.assertIn(b'New Pet Adoption Ad', result.data)
+        self.assertIn(b'Save Pet Adoption Ad', result.data)
 
 @mock.patch('pymongo.collection.Collection.find_one')
 def test_show_adoption(self, mock_find):
