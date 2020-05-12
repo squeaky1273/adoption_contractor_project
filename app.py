@@ -9,7 +9,7 @@ db = client.get_default_database()
 
 adoption_ads = db.adoptions
 adoption_ads.insert_many = ([
-    {"name": "Mr. Chew", "img_url": "toy_poodle.png", "breed": "toy_poodle", "gender": "male", "description": "He is playful, but can get into lots of trouble.", "age": "3 years", "price": "$1000"}, 
+    {"name": "Mr. Chew", "img_url": "toy_poodle.png", "breed": "toy_poodle", "gender": "male", "description": "He is playful, but can get into lots of trouble.", "age": "3 years", "price": "$1000"},
     {"name": "Skittles", "img_url": "beagle.png", "breed": "beagle", "gender": "female", "description": "She loves people and is playful.", "age": "4 years", "price": "$500"},
     {"name": "Cleo", "img_url": "goldfish.png", "breed": "goldfish", "gender": "female", "description": "She is healthy and is funny to watch.", "age": "3 year", "price": "$5"},
     {"name": "Potty", "img_url": "parrot.png", "breed": "parrot", "gender": "male", "description": "He may or may not have learned some curse words.", "age": "2 years", "price": "$100"},
